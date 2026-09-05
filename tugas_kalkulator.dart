@@ -75,6 +75,9 @@ clearScreen();
 
 
 void main(){
+
+  clearScreen();
+  
   print('=== APLIKASI KALKULATOR SEDERHANA ===');
 
   // ----- 1. LOGIN (logic-nya langsung di main, pakai perulangan while) -----
