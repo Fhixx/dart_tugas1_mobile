@@ -8,14 +8,20 @@ class DataKelompok {
   String kelas = 'Kelompok 3 - SI-A';
   List<String> anggota = [
     'Taufik  - 124240070',
-    'Dito    - 1242400xx',
+    'Sultannang Nandito Setiyawan - 124240083',
   ];
 
+
+
+
+// untuk menampilkan data kelompok saat di call
   void tampilkan() {
     print('\n=== DATA KELOMPOK ===');
     print('Mata Kuliah : $mataKuliah');
     print('Kelas       : $kelas');
     print('Anggota     :');
+
+    //function call list nama anggota
     for (int i = 0; i < anggota.length; i++) {
       print('  ${i + 1}. ${anggota[i]}');
     }
@@ -23,41 +29,114 @@ class DataKelompok {
 }
 
 
+//bersihkan layar
+void clearScreen() {
+  if (Platform.isWindows) {
+    Process.runSync('cls', [], runInShell: true);
+  } else {
+    Process.runSync('clear', [], runInShell: true);
+  }
+}
+
+void cekGanjilGenap() {
+  clearScreen();
+  print('==============================================================================');
+  print('|                        Cek Ganjil/Genap Modulo                             |');
+  print('==============================================================================');
+   
+   print('Note: Ini adalah menu untuk menentukan ganjil genap dari suatu operasi Modulo...');
+
+   stdout.write("Masukkan jumlah angka yang akan di cek: ");
+  int inputAngka = int.parse(stdin.readLineSync()!);
+
+  // Membuat List dengan ukuran inputAngka
+  List<int> input = List.filled(inputAngka, 0);
+
+  // Mengisi List
+  for (int i = 0; i < inputAngka; i++) {
+    stdout.write("Masukkan angka ke-${i + 1}: ");
+    input[i] = int.parse(stdin.readLineSync()!);
+  }
+
+  print("\nHasil:");
+
+  // Mengecek setiap angka
+  for (int i = 0; i < input.length; i++) {
+    if (input[i] % 2 == 0) {
+      print("${input[i]} adalah GENAP");
+    } else {
+      print("${input[i]} adalah GANJIL");
+    }
+  }
+    print('Tekan Enter untuk melanjutkan...');
+      stdin.readLineSync(); // program berhenti di sini sampai user menekan Enter
+clearScreen();
+}
+
+
 void main(){
   print('=== APLIKASI KALKULATOR SEDERHANA ===');
 
   // ----- 1. LOGIN (logic-nya langsung di main, pakai perulangan while) -----
+
+  //pass and usn
   String usernameBenar = 'admin';
   String passwordBenar = '12345';
   bool sudahLogin = false;
-  int kesempatan = 3;
+  int kesempatan = 3; //jika lewat 3x maka hangus out 
 
+
+
+// jika sudah login = true dan kesempatan tidak 0 maka memulai system 
   while (!sudahLogin && kesempatan>0) {
-    stdout.write('\nUsername: ');
-    String username = stdin.readLineSync() ?? '';
+
+    //stdout.write untuk menulis output bedanya dengan print adalah tidak auto /n setelah output "username"
+    stdout.write('\nUsername: ');  
+    String username = stdin.readLineSync() ?? ''; // readLineSync untuk membaca input user stdin.readLineSync()
+
+
     stdout.write('Password: ');
     String password = stdin.readLineSync() ?? '';
 
+
+// cek login
     if (username == usernameBenar && password == passwordBenar) {
       sudahLogin = true;
       print('\nLogin berhasil!');
     } else {
-      kesempatan--;
+      kesempatan--; //menurun kan kesempatan ke angka 0 secara bertahap
       print('Username atau password salah, sisa kesempatan: $kesempatan.');
     }
   }
 
-  if (!sudahLogin) {
+
+
+  if (!sudahLogin) { // menuutup progres saat kesempatan habis
   print('\nKesempatan login habis. Program dihentikan.');
-  return;
+  return; //mengembalikan nilai 0 = false =stop while
   }
+
+
+
+
+  
   // ----- 2. TAMPILKAN DATA KELOMPOK (pakai class DataKelompok) -----
-  DataKelompok dataKelompok = DataKelompok();
+  DataKelompok dataKelompok = DataKelompok(); 
+  //DataKelompok pertama adalah nama class kemudian "dataKelompok" adalah variabel 
+  //kemudian setelah "=" ada datakelompok() berarti membuat 1 unit baru
+
+
+  //call fungsi tampilkan dari variabel dataKelompok
   dataKelompok.tampilkan();
 
-  // ----- 3. MENU UTAMA (tiap pilihan memanggil class menu masing-masing) -----
-  bool aplikasiJalan = true;
 
+
+
+  // ----- 3. MENU UTAMA (tiap pilihan memanggil class menu masing-masing) -----
+  bool aplikasiJalan = true; //selalu true agar while menu selalu jalan
+
+
+// menjalankan menu kalkulator (inti)
   while (aplikasiJalan) {
     print('\n=== MENU UTAMA ===');
     print('1. Tambah & Kurang');
@@ -67,13 +146,48 @@ void main(){
     print('5. Logout');
     stdout.write('Pilih menu (1-5): ');
 
-    String pilihan = stdin.readLineSync() ?? '';
+    String pilihan = stdin.readLineSync() ?? ''; // input pilihan
 
     if (pilihan == '1') {
       print("menu 1");
       print('Tekan Enter untuk melanjutkan...');
       stdin.readLineSync(); // program berhenti di sini sampai user menekan Enter
-    } else if (pilihan == '5') {
+
+      //menu 1 isi
+// ketik disini
+
+      //
+
+
+
+    } else if (pilihan == '2') {
+      print("menu 2");
+      print('Tekan Enter untuk melanjutkan...');
+      stdin.readLineSync(); // program berhenti di sini sampai user menekan Enter
+
+      //menu 1 isi
+// ketik disini
+
+      //
+    }else if (pilihan == '3') {
+      print("menu 3");
+      print('Tekan Enter untuk melanjutkan...');
+      stdin.readLineSync(); // program berhenti di sini sampai user menekan Enter
+
+      //core menu 3
+        cekGanjilGenap();
+    }else if (pilihan == '4') {
+      print("menu 1");
+      print('Tekan Enter untuk melanjutkan...');
+      stdin.readLineSync(); // program berhenti di sini sampai user menekan Enter
+
+     // core menu 4
+
+      
+    }
+
+
+else if (pilihan == '5') {
       aplikasiJalan = false;
       print('\nAnda telah logout. Sampai jumpa!');
     } else {
