@@ -94,6 +94,43 @@ void cekGanjilGenap() {
 clearScreen();
 }
 
+void jumlahTotalAngka() {
+  clearScreen();
+
+  print('==============================================================================');
+  print('|                         Jumlah Total Angka                                 |');
+  print('==============================================================================');
+
+  print('Note: Menu ini digunakan untuk menjumlahkan seluruh angka yang diinput.');
+
+  stdout.write("Masukkan jumlah angka: ");
+  int inputAngka = int.parse(stdin.readLineSync()!);
+
+  // Membuat List dengan ukuran inputAngka
+  List<int> input = List.filled(inputAngka, 0);
+
+  // Mengisi List
+  for (int i = 0; i < inputAngka; i++) {
+    stdout.write("Masukkan angka ke-${i + 1}: ");
+    input[i] = int.parse(stdin.readLineSync()!);
+  }
+
+  // Menghitung total
+  int total = 0;
+
+  for (int i = 0; i < input.length; i++) {
+    total += input[i];
+  }
+
+  print("\n==============================");
+  print("Jumlah Total Angka = $total");
+  print("==============================");
+
+  print('\nTekan Enter untuk melanjutkan...');
+  stdin.readLineSync();
+
+  clearScreen();
+}
 
 void main(){
 
@@ -205,13 +242,14 @@ void main(){
 
       //core menu 3
         cekGanjilGenap();
+
     }else if (pilihan == '4') {
       print("menu 1");
       print('Tekan Enter untuk melanjutkan...');
       stdin.readLineSync(); // program berhenti di sini sampai user menekan Enter
 
      // core menu 4
-
+jumlahTotalAngka();
       
     }
 
