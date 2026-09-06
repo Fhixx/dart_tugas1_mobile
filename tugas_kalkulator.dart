@@ -43,8 +43,72 @@ class DataKelompok {
   }
 }
 
+//bersihkan layar
+void clearScreen() {
+  if (Platform.isWindows) {
+    Process.runSync('cls', [], runInShell: true);
+  } else {
+    Process.runSync('clear', [], runInShell: true);
+  }
+}
+
+// ==================================================
+// CLASS: Kalkulator Lanjutan (bisa lebih dari 2 angka)
+// Cara pakai seperti kalkulator fisik:
+// masukkan angka, pilih operator, masukkan angka lagi,
+// ulangi terus, ketik "=" kapan saja untuk melihat hasil akhir.
+// ==================================================
+class Kalkulator {
+  void jalankan() {
+    print('==============================================================================');
+    print('|                         Kalkulator Sederhana                               |');
+    print('==============================================================================');
+    print('==============================================================================');
+    print('--- Kalkulator (+, -, x, :) untuk banyak angka ---');
+    print('Operator yang bisa dipakai: + , - , x , :');
+    print('Jika memasukkan huruf akan dikonversi jadi nilai 0.');
+    print('Ketik = kapan saja untuk melihat hasil dan berhenti.');
+    print('==============================================================================');
+ 
+    stdout.write('Masukkan angka    : ');
+    double hasil = double.tryParse(stdin.readLineSync() ?? '') ?? 0;
+ 
+    while (true) {
+      stdout.write('Masukkan Operator : ');
+      String operator = stdin.readLineSync() ?? '';
+ 
+      // Kalau user menekan "=", hitung berhenti dan hasil ditampilkan.
+      if (operator == '=') {
+        print('\nHasil akhir = $hasil');
+        break;
+      }
+ 
+      stdout.write('Angka berikutnya  : ');
+      double angka = double.tryParse(stdin.readLineSync() ?? '') ?? 0;
+ 
+      if (operator == '+') {
+        hasil = hasil + angka;
+      } else if (operator == '-') {
+        hasil = hasil - angka;
+      } else if (operator == 'x' || operator == '*') {
+        hasil = hasil * angka;
+      } else if (operator == ':' || operator == '/') {
+        if (angka == 0) {
+          print('Tidak bisa dibagi dengan nol, angka ini dilewati.\n');
+        } else {
+          hasil = hasil / angka;
+        }
+      } else {
+        print('Operator tidak dikenali, angka ini dilewati.\n');
+      }
+ 
+      print('Hasil sementara   : $hasil');
+    }
+  }
+}
 
 void main(){
+
   print('=== APLIKASI KALKULATOR SEDERHANA ===');
 
   // Objek DataKelompok dibuat di awal (sebelum login), karena sekarang
@@ -57,7 +121,7 @@ void main(){
   int kesempatan = 3; // jumlah percobaan login yang diperbolehkan
 
   while (!sudahLogin && kesempatan>0) {
-    stdout.write('\nUsername: ');
+    stdout.write('Username: ');
     String username = stdin.readLineSync() ?? '';
     stdout.write('Password: ');
     String password = stdin.readLineSync() ?? '';
@@ -82,6 +146,7 @@ void main(){
   bool aplikasiJalan = true;
 
   while (aplikasiJalan) {
+    clearScreen();
     print('\n=== MENU UTAMA ===');
     print('1. Tambah & Kurang');
     print('2. Kali & Bagi');
@@ -94,6 +159,8 @@ void main(){
 
     if (pilihan == '1') {
       print("menu 1");
+      Kalkulator menu = Kalkulator();
+      menu.jalankan();
       print('Tekan Enter untuk melanjutkan...');
       stdin.readLineSync(); // program berhenti di sini sampai user menekan Enter
     } else if (pilihan == '5') {
