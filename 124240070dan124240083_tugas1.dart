@@ -7,7 +7,7 @@ class DataKelompok {
   String mataKuliah = 'Pemrograman Aplikasi Mobile';
   String kelas = 'Kelompok 3 - SI-A';
   List<String> anggota = [
-    'Taufik  - 124240070',
+    'Taufik Nur Hidayah - 124240070',
     'Sultannang Nandito Setiyawan - 124240083',
   ];
 
@@ -16,8 +16,8 @@ class DataKelompok {
   // sekarang berupa DAFTAR akun supaya bisa lebih dari satu admin.
   // Setiap akun adalah satu Map berisi 'username' dan 'password'.
   List<Map<String, String>> _daftarAkun = [
-    {'username': 'admin', 'password': '12345'},
-    {'username': 'admin2', 'password': '67890'},
+    {'username': 'fix', 'password': '123'},
+    {'username': 'dito', 'password': '678'},
   ];
 
   void tampilkan() {
