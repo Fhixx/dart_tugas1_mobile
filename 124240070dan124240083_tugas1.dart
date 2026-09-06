@@ -21,15 +21,20 @@ class DataKelompok {
   ];
 
   void tampilkan() {
-    print('\n=== DATA KELOMPOK ===');
-    print('Mata Kuliah : $mataKuliah');
-    print('Kelas       : $kelas');
-    print('Anggota     :');
+    print('\n\n\n==================================================================================');
+    print('===============================DATA KELOMPOK======================================');
+    print('       Mata Kuliah : $mataKuliah');
+    print('       Kelas       : $kelas');
+    print('       Anggota     :');
 
     //function call list nama anggota
     for (int i = 0; i < anggota.length; i++) {
-      print('  ${i + 1}. ${anggota[i]}');
+      print('         ${i + 1}. ${anggota[i]}');
     }
+    print('==================================================================================');
+    print('==================================================================================\n\n\n');
+    print('Tekan Enter untuk melanjutkan...');
+      stdin.readLineSync(); // program berhenti di sini sampai user menekan Enter
   }
 
   // Sekarang cekLogin() melakukan perulangan (for) untuk mencocokkan
