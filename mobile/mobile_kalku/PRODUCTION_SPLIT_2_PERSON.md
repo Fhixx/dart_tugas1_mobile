@@ -1946,7 +1946,7 @@ Users
 Admin seed
 Password hashing
 Session
-Biometric
+Biometric(berikan tombol off di system dan default off wajib)
 Auth repository
 BMI repository
 User model
