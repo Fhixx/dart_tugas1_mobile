@@ -1936,7 +1936,7 @@ Produksi NusaFit dianggap lengkap hanya jika:
 
 # 20. Ringkasan Porsi Akhir
 
-## Developer 1
+## Developer 1 : dito
 
 ```text
 Core foundation
@@ -1966,7 +1966,7 @@ Android biometric config
 Integration/release build owner
 ```
 
-## Developer 2
+## Developer 2: taufikk
 
 ```text
 App shell
