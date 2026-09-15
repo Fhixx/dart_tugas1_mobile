@@ -181,3 +181,7 @@ agent.md
 Repository juga menyediakan compatibility files untuk beberapa AI coding agent. Semua compatibility file harus mengarahkan agent kembali ke `agent.md`, bukan membuat aturan berbeda.
 
 Jika Anda adalah AI agent yang mendukung `AGENTS.md`, baca `AGENTS.md`; isinya akan mengarahkan ke `agent.md`.
+
+## 10. pembagian
+developer1: dito
+developer2:taufikk
