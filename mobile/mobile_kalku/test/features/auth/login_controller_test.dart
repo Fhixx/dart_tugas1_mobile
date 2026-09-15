@@ -56,6 +56,18 @@ class MockSessionService implements SessionService {
   Future<bool> hasValidSession() async => currentSession != null;
 
   @override
+  Future<bool> isSessionExpired() async => currentSession == null;
+
+  @override
+  Future<Duration?> remainingSessionDuration() async {
+    if (currentSession == null) return null;
+    return currentSession!.expiresAt.difference(DateTime.now().toUtc());
+  }
+
+  @override
+  Future<DateTime?> getSessionExpiry() async => currentSession?.expiresAt;
+
+  @override
   Future<void> clearSession() async {
     currentSession = null;
   }
@@ -168,6 +180,38 @@ void main() {
       expect(controller.generalError, contains('dinonaktifkan'));
       expect(mockSessionService.currentSession, isNull);
     });
+
+    test('successful login saves session with authenticatedAt and expiresAt +30min', () async {
+      final validUser = User(
+        id: 1,
+        username: 'tofik',
+        passwordHash: 'hash',
+        passwordSalt: 'salt',
+        role: 'admin',
+        biometricEnabled: false,
+        isActive: true,
+        createdAt: DateTime(2026, 1, 1),
+        updatedAt: DateTime(2026, 1, 1),
+      );
+
+      mockAuthRepo.loginResult = AuthResult(status: AuthStatus.success, user: validUser);
+
+      final before = DateTime.now().toUtc();
+      final user = await controller.login(
+        rawUsername: 'tofik',
+        rawPassword: '123',
+      );
+      final after = DateTime.now().toUtc();
+
+      expect(user, equals(validUser));
+      expect(mockSessionService.currentSession, isNotNull);
+
+      final session = mockSessionService.currentSession!;
+      expect(session.authenticatedAt.isAfter(before.subtract(const Duration(seconds: 1))), isTrue);
+      expect(session.authenticatedAt.isBefore(after.add(const Duration(seconds: 1))), isTrue);
+      final diff = session.expiresAt.difference(session.authenticatedAt);
+      expect(diff, equals(SessionService.sessionTimeout));
+    });
   });
 
   group('LoginController Biometric Tests', () {
@@ -212,6 +256,34 @@ void main() {
       expect(user, equals(bioUser));
       expect(mockSessionService.currentSession, isNotNull);
       expect(mockSessionService.currentSession!.username, equals('tofik'));
+    });
+
+    test('biometric login saves session with authenticatedAt and expiresAt +30min', () async {
+      final bioUser = User(
+        id: 1,
+        username: 'tofik',
+        passwordHash: 'hash',
+        passwordSalt: 'salt',
+        role: 'admin',
+        biometricEnabled: true,
+        isActive: true,
+        createdAt: DateTime(2026, 1, 1),
+        updatedAt: DateTime(2026, 1, 1),
+      );
+
+      mockAuthRepo.biometricUser = bioUser;
+      mockBiometricService.authResult = const BiometricAuthResult(status: BiometricStatus.success);
+
+      final before = DateTime.now().toUtc();
+      await controller.loginWithBiometrics();
+      final after = DateTime.now().toUtc();
+
+      expect(mockSessionService.currentSession, isNotNull);
+      final session = mockSessionService.currentSession!;
+      expect(session.authenticatedAt.isAfter(before.subtract(const Duration(seconds: 1))), isTrue);
+      expect(session.authenticatedAt.isBefore(after.add(const Duration(seconds: 1))), isTrue);
+      final diff = session.expiresAt.difference(session.authenticatedAt);
+      expect(diff, equals(SessionService.sessionTimeout));
     });
 
     test('enableBiometricForUser calls biometric service', () async {

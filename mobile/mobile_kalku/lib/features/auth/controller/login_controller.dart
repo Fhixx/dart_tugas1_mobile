@@ -42,12 +42,22 @@ class LoginController extends ChangeNotifier {
   bool get canShowBiometricButton =>
       isBiometricAvailable && _isBiometricSupportedForLogin;
 
+  bool _disposed = false;
+
+  @override
+  void dispose() {
+    _disposed = true;
+    super.dispose();
+  }
+
   // ── Initialization ─────────────────────────────────────────────────────────
   Future<void> init() async {
     _biometricAvailability = await _biometricService.getAvailability();
     final userWithBiometrics = await _authRepository.findBiometricEnabledUser();
     _isBiometricSupportedForLogin = userWithBiometrics != null;
-    notifyListeners();
+    if (!_disposed) {
+      notifyListeners();
+    }
   }
 
   // ── UI Actions ─────────────────────────────────────────────────────────────
@@ -101,11 +111,14 @@ class LoginController extends ChangeNotifier {
 
       if (result.isSuccess && result.user != null) {
         final user = result.user as User;
+        final now = DateTime.now().toUtc();
         final session = UserSession(
           userId: user.id ?? 0,
           username: user.username,
           role: user.role,
           isLoggedIn: true,
+          authenticatedAt: now,
+          expiresAt: now.add(SessionService.sessionTimeout),
         );
         await _sessionService.saveSession(session);
         _isLoading = false;
@@ -146,11 +159,14 @@ class LoginController extends ChangeNotifier {
       final BiometricAuthResult bioResult = await _biometricService.authenticate();
 
       if (bioResult.isSuccess) {
+        final now = DateTime.now().toUtc();
         final session = UserSession(
           userId: user.id ?? 0,
           username: user.username,
           role: user.role,
           isLoggedIn: true,
+          authenticatedAt: now,
+          expiresAt: now.add(SessionService.sessionTimeout),
         );
         await _sessionService.saveSession(session);
         _isLoading = false;

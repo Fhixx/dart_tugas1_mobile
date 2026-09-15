@@ -41,7 +41,24 @@ class FakeSessionService implements SessionService {
   Future<UserSession?> readSession() async => session;
 
   @override
-  Future<bool> hasValidSession() async => session != null;
+  Future<bool> hasValidSession() async => session != null && DateTime.now().toUtc().isBefore(session!.expiresAt);
+
+  @override
+  Future<bool> isSessionExpired() async {
+    if (session == null) return true;
+    return !DateTime.now().toUtc().isBefore(session!.expiresAt);
+  }
+
+  @override
+  Future<Duration?> remainingSessionDuration() async {
+    if (session == null) return null;
+    return session!.expiresAt.difference(DateTime.now().toUtc());
+  }
+
+  @override
+  Future<DateTime?> getSessionExpiry() async {
+    return session?.expiresAt;
+  }
 
   @override
   Future<void> clearSession() async => session = null;

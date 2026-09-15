@@ -4,7 +4,7 @@ import '../../../core/security/auth_contract.dart';
 import '../../../core/database/admin_seed.dart';
 import '../../../core/database/database_helper.dart';
 import '../../../data/models/user.dart';
-import 'login_page.dart';
+import 'package:mobile_kalku/features/auth/pages/login_page.dart';
 
 /// Initial entry screen and authentication gate for NusaFit.
 ///
@@ -62,13 +62,17 @@ class _SplashPageState extends State<SplashPage> {
       User? sessionUser;
 
       if (session != null) {
-        final maps = await db.query(
-          'users',
-          where: 'id = ? AND is_active = 1',
-          whereArgs: [session.userId],
-        );
-        if (maps.isNotEmpty) {
-          sessionUser = User.fromMap(maps.first);
+        // 3a. Hard timeout check — expired session must not enter authenticated routes.
+        final expired = await _sessionService.isSessionExpired();
+        if (!expired) {
+          final maps = await db.query(
+            'users',
+            where: 'id = ? AND is_active = 1',
+            whereArgs: [session.userId],
+          );
+          if (maps.isNotEmpty) {
+            sessionUser = User.fromMap(maps.first);
+          }
         }
       }
       
