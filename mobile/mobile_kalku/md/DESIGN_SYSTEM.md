@@ -9,7 +9,7 @@ Dokumen ini hanya membahas visual dan tata letak. Jangan menaruh logic komputasi
 Nama aplikasi:
 
 ```text
-NusaFit
+Kalkulator BMI (mutlak abaikan penamaan lain!!!)
 ```
 
 Subtitle:
