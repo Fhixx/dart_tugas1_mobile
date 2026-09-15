@@ -185,3 +185,92 @@ Jika Anda adalah AI agent yang mendukung `AGENTS.md`, baca `AGENTS.md`; isinya a
 ## 10. pembagian
 developer1: dito
 developer2:taufikk
+
+---
+
+# Context Loading Policy
+
+Normal task startup:
+
+1. Read agent.md
+2. Read AI_CONTEXT.md
+3. Read AI_STATE.md
+4. Inspect .agent/context_manifest.json
+5. Check whether authoritative documents changed
+
+DO NOT reread all /md files for every task.
+
+Full documentation reload is required only when:
+
+- AI_CONTEXT.md does not exist
+- AI_STATE.md does not exist
+- context manifest is missing/corrupt
+- authoritative document hash changed
+- user explicitly requests full documentation audit
+- current task requires information absent from AI_CONTEXT.md
+- documents conflict with cached context
+- requirements have changed
+
+If only one source document changed:
+- read only that changed document
+- update relevant AI_CONTEXT.md sections
+- update manifest hash
+
+If implementation state changed but requirements did not:
+- update AI_STATE.md only
+- do NOT reread full documentation
+- do NOT regenerate AI_CONTEXT.md unnecessarily
+
+---
+
+# Source Precedence
+
+When requirements conflict:
+
+1. Latest explicit user instruction
+2. agent.md active repository policy
+3. AI_STATE.md for current implementation state
+4. AI_CONTEXT.md for compressed project requirements
+5. Authoritative source documents in /md
+6. Existing source code when determining current implementation reality
+
+Important:
+AI_CONTEXT.md is a cache/summary.
+It must never silently override a changed authoritative source document.
+
+---
+
+# Future Task Policy
+
+For ordinary future prompts, an AI agent must NOT perform:
+
+"read all Markdown files"
+
+unless invalidation conditions are met.
+
+Instead:
+
+- use AI_CONTEXT.md for project knowledge
+- use AI_STATE.md for production progress
+- inspect only source files relevant to the task
+- inspect only changed documentation
+- update AI_STATE.md after completing a production phase
+
+---
+
+# AI_STATE Update Rule
+
+After completing a production phase:
+
+Update AI_STATE.md with:
+
+- completed phase
+- actual files created
+- actual files modified
+- verified tests
+- flutter analyze result
+- blockers
+- current next phase
+
+Do NOT rewrite AI_CONTEXT.md merely because code implementation progressed.
+AI_CONTEXT.md changes only when project requirements/specification change.
