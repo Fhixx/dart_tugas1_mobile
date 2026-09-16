@@ -1,0 +1,135 @@
+import 'package:flutter/material.dart';
+
+import '../../../core/constants/app_colors.dart';
+import '../../../core/constants/app_strings.dart';
+import '../../../widgets/confirmation_dialog.dart';
+import '../../help/pages/help_page.dart';
+import '../../stopwatch/pages/stopwatch_page.dart';
+import 'home_page.dart';
+
+/// Root shell after login: bottom navigation across Home / Stopwatch /
+/// Panduan, plus a Logout action (MENU_IMPLEMENTATION.md #3).
+///
+/// Uses `IndexedStack` so Stopwatch keeps running when the user switches
+/// tabs (COMPUTATION_LOGIC.md #11 / MENU_IMPLEMENTATION.md #13). Logout is
+/// NOT a tab content — tapping it only opens a confirmation dialog and
+/// never changes `_currentIndex`.
+///
+/// [onLogoutConfirmed] is the integration point for Developer 1's
+/// `SessionService` + Login navigation. Until that's wired in, the
+/// default implementation only closes the dialog and shows a stub
+/// message — replace it once `SessionService.clearSession()` exists.
+class MainShell extends StatefulWidget {
+  const MainShell({super.key, this.onLogoutConfirmed});
+
+  final VoidCallback? onLogoutConfirmed;
+
+  @override
+  State<MainShell> createState() => _MainShellState();
+}
+
+class _MainShellState extends State<MainShell> {
+  int _currentIndex = 0;
+
+  static const _tabs = [HomePage(), StopwatchPage(), HelpPage()];
+
+  Future<void> _handleTap(int index) async {
+    if (index == 3) {
+      final confirmed = await ConfirmationDialog.show(
+        context,
+        title: AppStrings.dialogLogoutConfirmTitle,
+        message: AppStrings.dialogLogoutConfirmMessage,
+        confirmLabel: AppStrings.dialogLogoutConfirmAction,
+      );
+      if (confirmed == true) {
+        _performLogout();
+      }
+      return;
+    }
+    setState(() => _currentIndex = index);
+  }
+
+  void _performLogout() {
+    if (widget.onLogoutConfirmed != null) {
+      widget.onLogoutConfirmed!();
+      return;
+    }
+    // TODO(dev1): replace with SessionService.clearSession() then
+    // Navigator.pushAndRemoveUntil(context, LoginPage route, (_) => false).
+    ScaffoldMessenger.of(context).showSnackBar(
+      const SnackBar(
+        content: Text('Logout stub — SessionService Developer 1 belum terpasang.'),
+      ),
+    );
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      body: IndexedStack(index: _currentIndex, children: _tabs),
+      bottomNavigationBar: _MainBottomNav(
+        currentIndex: _currentIndex,
+        onTap: _handleTap,
+      ),
+    );
+  }
+}
+
+class _MainBottomNav extends StatelessWidget {
+  const _MainBottomNav({required this.currentIndex, required this.onTap});
+
+  final int currentIndex;
+  final ValueChanged<int> onTap;
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      decoration: BoxDecoration(
+        color: AppColors.surface,
+        borderRadius: const BorderRadius.only(
+          topLeft: Radius.circular(20),
+          topRight: Radius.circular(20),
+        ),
+        boxShadow: [
+          BoxShadow(
+            color: Colors.black.withValues(alpha: 0.06),
+            blurRadius: 12,
+            offset: const Offset(0, -2),
+          ),
+        ],
+      ),
+      child: SafeArea(
+        child: BottomNavigationBar(
+          currentIndex: currentIndex,
+          onTap: onTap,
+          type: BottomNavigationBarType.fixed,
+          backgroundColor: Colors.transparent,
+          elevation: 0,
+          selectedItemColor: AppColors.navSelected,
+          unselectedItemColor: AppColors.navUnselected,
+          items: const [
+            BottomNavigationBarItem(
+              icon: Icon(Icons.home_outlined),
+              activeIcon: Icon(Icons.home),
+              label: AppStrings.navHome,
+            ),
+            BottomNavigationBarItem(
+              icon: Icon(Icons.timer_outlined),
+              activeIcon: Icon(Icons.timer),
+              label: AppStrings.navStopwatch,
+            ),
+            BottomNavigationBarItem(
+              icon: Icon(Icons.menu_book_outlined),
+              activeIcon: Icon(Icons.menu_book),
+              label: AppStrings.navPanduan,
+            ),
+            BottomNavigationBarItem(
+              icon: Icon(Icons.logout, color: AppColors.navLogout),
+              label: AppStrings.navLogout,
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}
