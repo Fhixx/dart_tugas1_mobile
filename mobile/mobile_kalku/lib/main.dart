@@ -3,7 +3,6 @@ import 'features/auth/pages/splash_page.dart';
 import 'features/auth/pages/login_page.dart';
 import 'features/home/pages/main_shell.dart';
 import 'core/security/session_service.dart';
-import 'core/security/auth_contract.dart';
 import 'data/models/user.dart';
 
 void main() {
