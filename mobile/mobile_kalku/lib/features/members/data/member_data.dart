@@ -7,14 +7,14 @@ import '../models/member.dart';
 /// PRODUCTION_SPLIT_2_PERSON.md.
 const List<Member> kGroupMembers = [
   Member(
-    name: 'Dito',
-    nim: 'TODO: isi NIM',
-    role: 'Developer 1 — Core, Database, Security, Auth, BMI',
+    name: 'topek',
+    nim: '12424',
+    role: '',
   ),
   Member(
-    name: 'Taufikk',
-    nim: 'TODO: isi NIM',
+    name: 'Sultannang Nandito Setiyawan',
+    nim: '124240083',
     role:
-        'Developer 2 — Design System, Navigation, Kalender Nusantara, Stopwatch',
+        '',
   ),
 ];
