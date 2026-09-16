@@ -2,10 +2,10 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:sqflite_common_ffi/sqflite_ffi.dart';
 import 'package:path/path.dart' hide equals;
 
-import 'package:mobile_kalku/core/database/database_helper.dart';
-import 'package:mobile_kalku/core/database/admin_seed.dart';
-import 'package:mobile_kalku/core/domain/auth_result.dart';
-import 'package:mobile_kalku/data/repositories/auth_repository.dart';
+import 'package:mobile_kalku/inti/basis_data/pengelola_basis_data.dart';
+import 'package:mobile_kalku/inti/basis_data/data_awal_admin.dart';
+import 'package:mobile_kalku/inti/domain/hasil_autentikasi.dart';
+import 'package:mobile_kalku/data/repositori/repositori_autentikasi.dart';
 
 void main() {
   setUpAll(() {

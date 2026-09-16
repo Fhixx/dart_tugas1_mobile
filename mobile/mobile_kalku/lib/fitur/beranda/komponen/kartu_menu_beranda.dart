@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 
-import '../../../core/constants/app_colors.dart';
-import '../../../core/constants/app_dimensions.dart';
-import '../../../widgets/app_card.dart';
+import '../../../inti/konstanta/warna_aplikasi.dart';
+import '../../../inti/konstanta/dimensi_aplikasi.dart';
+import '../../../komponen/kartu_aplikasi.dart';
 
-/// One row of the Home menu list:
-/// `[Icon]  Judul            >`
+/// Satu baris menu pada daftar Beranda:
+/// `[Ikon]  Judul            >`
 /// `        Deskripsi pendek`
-/// per DESIGN_SYSTEM.md #11.
+/// Sesuai DESIGN_SYSTEM.md #11.
 class HomeMenuCard extends StatelessWidget {
   const HomeMenuCard({
     super.key,

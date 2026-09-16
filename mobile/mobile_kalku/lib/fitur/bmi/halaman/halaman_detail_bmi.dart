@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import '../../../data/models/bmi_record.dart';
-import '../../../data/models/user.dart';
-import '../../../data/repositories/bmi_repository.dart';
-import 'bmi_edit_page.dart';
+import '../../../data/model/catatan_bmi.dart';
+import '../../../data/model/pengguna.dart';
+import '../../../data/repositori/repositori_bmi.dart';
+import 'halaman_edit_bmi.dart';
 
 /// Screen displaying the complete details of a single [BmiRecord].
 ///

@@ -1,25 +1,26 @@
 import 'package:flutter/material.dart';
 
-import '../../../core/constants/app_colors.dart';
-import '../../../core/constants/app_strings.dart';
-import '../../../data/models/user.dart';
-import '../../../widgets/confirmation_dialog.dart';
-import '../../help/pages/help_page.dart';
-import '../../stopwatch/pages/stopwatch_page.dart';
-import 'home_page.dart';
+import '../../../inti/konstanta/warna_aplikasi.dart';
+import '../../../inti/konstanta/teks_aplikasi.dart';
+import '../../../data/model/pengguna.dart';
+import '../../../komponen/dialog_konfirmasi.dart';
+import '../../panduan/halaman/halaman_panduan.dart';
+import '../../stopwatch/halaman/halaman_stopwatch.dart';
+import 'halaman_beranda.dart';
 
-/// Root shell after login: bottom navigation across Home / Stopwatch /
-/// Panduan, plus a Logout action (MENU_IMPLEMENTATION.md #3).
+/// Kerangka utama setelah login: menyediakan navigasi bawah (bottom navigation)
+/// antara Beranda / Stopwatch / Panduan, serta aksi Keluar (Logout)
+/// (Sesuai MENU_IMPLEMENTATION.md #3).
 ///
-/// Uses `IndexedStack` so Stopwatch keeps running when the user switches
-/// tabs (COMPUTATION_LOGIC.md #11 / MENU_IMPLEMENTATION.md #13). Logout is
-/// NOT a tab content — tapping it only opens a confirmation dialog and
-/// never changes `_currentIndex`.
+/// Menggunakan `IndexedStack` agar Stopwatch tetap berjalan saat pengguna
+/// berpindah tab (Sesuai COMPUTATION_LOGIC.md #11 / MENU_IMPLEMENTATION.md #13).
+/// Keluar (Logout) BUKANLAH konten tab — menekannya hanya akan memunculkan dialog
+/// konfirmasi dan tidak akan pernah mengubah `_currentIndex`.
 ///
-/// [onLogoutConfirmed] is the integration point for Developer 1's
-/// `SessionService` + Login navigation. Until that's wired in, the
-/// default implementation only closes the dialog and shows a stub
-/// message — replace it once `SessionService.clearSession()` exists.
+/// [onLogoutConfirmed] adalah titik integrasi untuk `SessionService` dari Developer 1
+/// beserta navigasi Login. Sebelum hal tersebut dihubungkan, implementasi bawaan
+/// hanya akan menutup dialog dan menampilkan pesan sementara — harus diganti
+/// setelah `SessionService.clearSession()` tersedia.
 class MainShell extends StatefulWidget {
   const MainShell({
     super.key,

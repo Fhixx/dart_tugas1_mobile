@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import '../../../data/models/user.dart';
-import '../../../data/repositories/bmi_repository.dart';
-import '../controllers/bmi_calculator_controller.dart';
-import 'bmi_result_page.dart';
+import '../../../data/model/pengguna.dart';
+import '../../../data/repositori/repositori_bmi.dart';
+import '../pengontrol/pengontrol_perhitungan_bmi.dart';
+import 'halaman_hasil_bmi.dart';
 
 /// BMI Calculator input screen.
 ///

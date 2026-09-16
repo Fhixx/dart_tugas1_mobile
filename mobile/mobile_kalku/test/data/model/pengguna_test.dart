@@ -1,5 +1,5 @@
 import 'package:flutter_test/flutter_test.dart';
-import 'package:mobile_kalku/data/models/user.dart';
+import 'package:mobile_kalku/data/model/pengguna.dart';
 
 void main() {
   group('User Model', () {

@@ -1,4 +1,4 @@
-import 'bmi_category.dart';
+import 'kategori_bmi.dart';
 
 /// Typed result object produced by [BmiCalculator.calculate].
 ///

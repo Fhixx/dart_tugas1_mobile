@@ -1,4 +1,4 @@
-import 'calculation_error.dart';
+import 'kesalahan_perhitungan.dart';
 
 /// Result of a Gregorian -> Hijri conversion.
 class HijriDateResult {

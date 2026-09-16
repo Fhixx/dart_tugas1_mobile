@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'features/auth/pages/splash_page.dart';
-import 'features/auth/pages/login_page.dart';
-import 'features/home/pages/main_shell.dart';
-import 'core/security/session_service.dart';
-import 'data/models/user.dart';
+import 'fitur/autentikasi/halaman/halaman_splash.dart';
+import 'fitur/autentikasi/halaman/halaman_login.dart';
+import 'fitur/beranda/halaman/kerangka_utama.dart';
+import 'inti/keamanan/layanan_sesi.dart';
+import 'data/model/pengguna.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();

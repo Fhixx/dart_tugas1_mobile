@@ -1,4 +1,4 @@
-import 'app_exception.dart';
+import 'pengecualian_aplikasi.dart';
 
 /// Abstract base class for failures that can be returned from services or repositories.
 ///

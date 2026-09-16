@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import '../../../core/domain/bmi_calculation_result.dart';
-import '../../../core/domain/bmi_category.dart';
-import '../../../data/models/user.dart';
-import '../../../data/repositories/bmi_repository.dart';
-import '../controllers/bmi_calculator_controller.dart';
+import '../../../inti/domain/hasil_perhitungan_bmi.dart';
+import '../../../inti/domain/kategori_bmi.dart';
+import '../../../data/model/pengguna.dart';
+import '../../../data/repositori/repositori_bmi.dart';
+import '../pengontrol/pengontrol_perhitungan_bmi.dart';
 
 /// BMI Result screen.
 ///

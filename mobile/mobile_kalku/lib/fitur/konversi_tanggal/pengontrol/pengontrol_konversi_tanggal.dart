@@ -2,25 +2,26 @@ import 'dart:async';
 
 import 'package:flutter/foundation.dart';
 
-import '../../../domain/calculators/age_calculator.dart';
-import '../../../domain/calculators/bali_calendar_converter.dart';
-import '../../../domain/calculators/hijri_converter.dart';
-import '../../../domain/calculators/weton_calculator.dart';
+import '../../../logika/perhitungan/perhitungan_umur.dart';
+import '../../../logika/perhitungan/konversi_kalender_bali.dart';
+import '../../../logika/perhitungan/konversi_hijriah.dart';
+import '../../../logika/perhitungan/perhitungan_weton.dart';
 
 /// Segment filter options for the Date Converter screen
 /// (DESIGN_SYSTEM.md #16 / MENU_IMPLEMENTATION.md #11).
 enum DateConverterFilter { semua, masehi, hijriah, weton, sakaBali }
 
-/// Controller for the Date Converter screen.
+/// Pengontrol (Controller) untuk layar Konversi Tanggal.
 ///
-/// [selectedDateTime] is the single source of truth
-/// (MENU_IMPLEMENTATION.md #11) — every card (Masehi/Hijriah/Weton/Saka
-/// Bali/Usia) is derived from it. Changing the segment [filter] only
-/// changes which cards are visible; it never changes the selected date.
+/// [selectedDateTime] merupakan sumber kebenaran tunggal (single source of truth)
+/// (Sesuai MENU_IMPLEMENTATION.md #11) — semua kartu (Masehi/Hijriah/Weton/Saka
+/// Bali/Usia) diturunkan dari variabel ini. Mengubah filter [filter] hanya
+/// menentukan kartu mana yang terlihat; tindakan ini tidak pernah mengubah
+/// tanggal yang dipilih.
 ///
-/// Owns a 1-second timer purely to refresh the realtime age display
-/// (COMPUTATION_LOGIC.md #6) — the timer never touches the calculators
-/// themselves, and is cancelled in [dispose].
+/// Memiliki sebuah Timer 1-detik murni untuk memperbarui tampilan usia secara waktu nyata
+/// (Sesuai COMPUTATION_LOGIC.md #6) — Timer tersebut sama sekali tidak memengaruhi
+/// kalkulator itu sendiri, dan akan dibatalkan pada [dispose].
 class DateConverterController extends ChangeNotifier {
   DateConverterController({DateTime? initialDateTime})
       : selectedDateTime = initialDateTime ?? DateTime.now(),

@@ -1,15 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:sqflite_common_ffi/sqflite_ffi.dart';
-import 'package:mobile_kalku/core/database/database_helper.dart';
-import 'package:mobile_kalku/data/models/bmi_record.dart';
-import 'package:mobile_kalku/data/models/user.dart';
-import 'package:mobile_kalku/data/repositories/bmi_repository.dart';
-import 'package:mobile_kalku/features/bmi/controllers/bmi_edit_controller.dart';
-import 'package:mobile_kalku/features/bmi/controllers/bmi_history_controller.dart';
-import 'package:mobile_kalku/features/bmi/pages/bmi_detail_page.dart';
-import 'package:mobile_kalku/features/bmi/pages/bmi_edit_page.dart';
-import 'package:mobile_kalku/features/bmi/pages/bmi_history_page.dart';
+import 'package:mobile_kalku/inti/basis_data/pengelola_basis_data.dart';
+import 'package:mobile_kalku/data/model/catatan_bmi.dart';
+import 'package:mobile_kalku/data/model/pengguna.dart';
+import 'package:mobile_kalku/data/repositori/repositori_bmi.dart';
+import 'package:mobile_kalku/fitur/bmi/pengontrol/pengontrol_edit_bmi.dart';
+import 'package:mobile_kalku/fitur/bmi/pengontrol/pengontrol_riwayat_bmi.dart';
+import 'package:mobile_kalku/fitur/bmi/halaman/halaman_detail_bmi.dart';
+import 'package:mobile_kalku/fitur/bmi/halaman/halaman_edit_bmi.dart';
+import 'package:mobile_kalku/fitur/bmi/halaman/halaman_riwayat_bmi.dart';
 
 void main() {
   late Database db;

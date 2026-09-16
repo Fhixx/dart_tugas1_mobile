@@ -40,15 +40,16 @@ Phase 7 completed. All Developer 1 phases done.
 - Sessions: Implemented with `FlutterSecureStorage`.
 - Data Isolation: `BmiRepository` strictly scopes all CRUD operations by `user_id`.
 
-## Current Tests
-- Core Tests: `database_helper_test.dart`, `migration_test.dart`, `security_utils_test.dart`, `validation_utils_test.dart`.
-- Auth Repo Tests: `auth_repository_test.dart`, `password_service_test.dart`, `biometric_service_test.dart`, `admin_seed_test.dart`.
-- Auth UI Tests: `login_controller_test.dart`, `login_page_test.dart`, `splash_page_test.dart`.
-- BMI Domain Tests: `bmi_calculator_test.dart`.
-- BMI Repository Tests: `bmi_repository_test.dart`.
-- BMI Calculator & Result Tests: `bmi_calculator_controller_test.dart`, `bmi_pages_test.dart`.
-- BMI History, Detail & Edit Tests: `bmi_history_controller_test.dart`, `bmi_edit_controller_test.dart`, `bmi_history_pages_test.dart`.
-- Total Verified: 213 passing tests.
+## Current Tests (setelah refactor nama path Indonesia)
+- Inti Tests: `test/inti/basis_data/database_helper_test.dart`, `test/inti/basis_data/admin_seed_test.dart`
+- Keamanan Tests: `test/inti/keamanan/password_service_test.dart`, `test/inti/keamanan/biometric_service_test.dart`, `test/inti/keamanan/session_service_test.dart`
+- Domain Tests: `test/inti/domain/bmi_calculator_test.dart`
+- Utilitas Tests: `test/inti/utilitas/sanitizer_test.dart`, `test/inti/utilitas/validator_test.dart`
+- Data Model Tests: `test/data/model/pengguna_test.dart`, `test/data/model/catatan_bmi_test.dart`
+- Repositori Tests: `test/data/repositori/repositori_autentikasi_test.dart`, `test/data/repositori/repositori_bmi_test.dart`
+- Fitur Autentikasi Tests: `test/fitur/autentikasi/login_controller_test.dart`, `test/fitur/autentikasi/login_page_test.dart`, `test/fitur/autentikasi/splash_page_test.dart`
+- Fitur BMI Tests: `test/fitur/bmi/pengontrol_perhitungan_bmi_test.dart`, `test/fitur/bmi/halaman_bmi_test.dart`, `test/fitur/bmi/pengontrol_riwayat_bmi_test.dart`, `test/fitur/bmi/pengontrol_edit_bmi_test.dart`, `test/fitur/bmi/halaman_riwayat_bmi_test.dart`
+- Total Verified: 247 passing tests.
 
 ## Last Verification
 - `flutter test` passed (213/213).

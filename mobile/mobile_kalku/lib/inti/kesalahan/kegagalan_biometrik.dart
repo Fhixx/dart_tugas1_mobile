@@ -1,4 +1,4 @@
-import '../errors/failure.dart';
+import 'kegagalan.dart';
 
 /// Placeholder failure for biometric related errors.
 ///

@@ -2,10 +2,10 @@ import 'package:flutter/services.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:local_auth/local_auth.dart';
 import 'package:local_auth/error_codes.dart' as auth_error;
-import 'package:mobile_kalku/core/domain/biometric_result.dart';
-import 'package:mobile_kalku/core/security/biometric_service.dart';
-import 'package:mobile_kalku/data/models/user.dart';
-import 'package:mobile_kalku/data/repositories/auth_repository.dart';
+import 'package:mobile_kalku/inti/domain/hasil_biometrik.dart';
+import 'package:mobile_kalku/inti/keamanan/layanan_biometrik.dart';
+import 'package:mobile_kalku/data/model/pengguna.dart';
+import 'package:mobile_kalku/data/repositori/repositori_autentikasi.dart';
 
 // ─── Fake AuthRepository ────────────────────────────────────────────────────
 

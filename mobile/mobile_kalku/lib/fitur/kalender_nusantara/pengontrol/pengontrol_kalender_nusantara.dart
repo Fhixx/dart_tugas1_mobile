@@ -1,14 +1,15 @@
 import 'package:flutter/foundation.dart';
 
-import '../../../domain/calculators/bali_calendar_converter.dart';
-import '../../../domain/calculators/weton_calculator.dart';
+import '../../../logika/perhitungan/konversi_kalender_bali.dart';
+import '../../../logika/perhitungan/perhitungan_weton.dart';
 
-/// Controller for the Kalender Nusantara screen.
+/// Pengontrol (Controller) untuk layar Kalender Nusantara.
 ///
-/// Focused on Weton + Saka Bali detail (MENU_IMPLEMENTATION.md #12).
-/// Input stays Gregorian — [selectedDate] is the single source of truth.
-/// No realtime timer here (unlike Date Converter's Usia card); this
-/// screen has no time-dependent field.
+/// Berfokus pada detail Weton + Saka Bali (Sesuai MENU_IMPLEMENTATION.md #12).
+/// Input tetap dalam format Masehi (Gregorian) — [selectedDate] adalah
+/// sumber kebenaran tunggal (single source of truth).
+/// Tidak ada Timer waktu nyata di sini (berbeda dengan fitur Usia pada
+/// Konversi Tanggal); layar ini tidak memiliki parameter yang bergantung waktu secara realtime.
 class NusantaraCalendarController extends ChangeNotifier {
   NusantaraCalendarController({DateTime? initialDate})
       : selectedDate = initialDate ?? DateTime.now();

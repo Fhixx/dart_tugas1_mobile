@@ -1,5 +1,5 @@
 import 'package:flutter_test/flutter_test.dart';
-import 'package:mobile_kalku/data/models/bmi_record.dart';
+import 'package:mobile_kalku/data/model/catatan_bmi.dart';
 
 void main() {
   group('BmiRecord Model', () {

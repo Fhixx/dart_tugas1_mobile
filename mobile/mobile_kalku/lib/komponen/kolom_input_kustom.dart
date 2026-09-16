@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
-import '../core/constants/app_colors.dart';
-import '../core/constants/app_dimensions.dart';
+import '../inti/konstanta/warna_aplikasi.dart';
+import '../inti/konstanta/dimensi_aplikasi.dart';
 
 /// Standard text input field with consistent state styling
 /// (normal / focused / error / disabled) per DESIGN_SYSTEM.md #12.

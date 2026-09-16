@@ -2,16 +2,17 @@ import 'dart:async';
 
 import 'package:flutter/foundation.dart';
 
-import '../../../domain/calculators/stopwatch_formatter.dart';
+import '../../../logika/perhitungan/format_stopwatch.dart';
 
 enum StopwatchStatus { idle, running, paused }
 
-/// Controller for the Stopwatch feature.
+/// Pengontrol (Controller) untuk fitur Stopwatch.
 ///
-/// Uses Dart's monotonic `Stopwatch` as the timing source
-/// (COMPUTATION_LOGIC.md #11) — the periodic `Timer` here ONLY triggers a
-/// UI refresh, it never adds elapsed time itself, so timer jitter/delay
-/// cannot accumulate drift.
+/// Menggunakan `Stopwatch` bawaan Dart yang monoton sebagai sumber waktu
+/// (Sesuai COMPUTATION_LOGIC.md #11) — `Timer` periodik di sini HANYA
+/// berfungsi memicu pembaruan UI (UI refresh), tidak pernah menambahkan
+/// waktu berlalu dengan sendirinya, sehingga lag/jeda Timer tidak akan
+/// menyebabkan perhitungan waktu menjadi menyimpang (drift).
 class StopwatchController extends ChangeNotifier {
   final Stopwatch _stopwatch = Stopwatch();
   Timer? _ticker;

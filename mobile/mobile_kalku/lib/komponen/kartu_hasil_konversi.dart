@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 
-import '../core/constants/app_colors.dart';
-import '../core/constants/app_dimensions.dart';
-import 'app_card.dart';
+import '../inti/konstanta/warna_aplikasi.dart';
+import '../inti/konstanta/dimensi_aplikasi.dart';
+import 'kartu_aplikasi.dart';
 
 class ConversionRow {
   const ConversionRow(this.label, this.value);

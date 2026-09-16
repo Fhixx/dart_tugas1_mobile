@@ -1,7 +1,7 @@
 import 'package:flutter_test/flutter_test.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
-import 'package:mobile_kalku/core/security/session_service.dart';
-import 'package:mobile_kalku/data/models/user_session.dart';
+import 'package:mobile_kalku/inti/keamanan/layanan_sesi.dart';
+import 'package:mobile_kalku/data/model/sesi_pengguna.dart';
 
 /// A simple in-memory fake for [FlutterSecureStorage] used in tests.
 /// This avoids requiring real Android secure storage during unit tests.

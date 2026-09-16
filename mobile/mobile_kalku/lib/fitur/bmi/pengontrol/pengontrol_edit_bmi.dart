@@ -1,7 +1,7 @@
 import 'package:flutter/foundation.dart';
-import '../../../core/domain/bmi_calculator.dart';
-import '../../../data/models/bmi_record.dart';
-import '../../../data/repositories/bmi_repository.dart';
+import '../../../inti/domain/perhitungan_bmi.dart';
+import '../../../data/model/catatan_bmi.dart';
+import '../../../data/repositori/repositori_bmi.dart';
 
 /// Save state for the BMI edit process.
 enum EditSaveState {

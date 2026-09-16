@@ -1,5 +1,5 @@
 import 'package:flutter_test/flutter_test.dart';
-import 'package:mobile_kalku/core/utils/validators.dart';
+import 'package:mobile_kalku/inti/utilitas/validator_input.dart';
 
 void main() {
   group('Validators', () {

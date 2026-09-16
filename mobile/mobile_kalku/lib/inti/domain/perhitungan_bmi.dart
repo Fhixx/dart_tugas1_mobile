@@ -1,7 +1,7 @@
-import '../utils/sanitizers.dart';
-import '../utils/validators.dart';
-import 'bmi_calculation_result.dart';
-import 'bmi_category.dart';
+import '../utilitas/pembersih_input.dart';
+import '../utilitas/validator_input.dart';
+import 'hasil_perhitungan_bmi.dart';
+import 'kategori_bmi.dart';
 
 /// Pure-domain BMI calculator.
 ///

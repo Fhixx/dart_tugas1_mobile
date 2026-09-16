@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 
-import '../core/constants/app_colors.dart';
-import '../core/constants/app_dimensions.dart';
-import '../core/constants/app_strings.dart';
+import '../inti/konstanta/warna_aplikasi.dart';
+import '../inti/konstanta/dimensi_aplikasi.dart';
+import '../inti/konstanta/teks_aplikasi.dart';
 
 /// Reusable confirmation dialog for destructive/irreversible actions
 /// (delete BMI, logout, exit app) per DESIGN_SYSTEM.md #19.

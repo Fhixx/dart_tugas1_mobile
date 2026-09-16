@@ -1,6 +1,6 @@
 import 'package:sqflite/sqflite.dart';
-import '../../core/errors/database_failure.dart';
-import '../models/bmi_record.dart';
+import '../../inti/kesalahan/kegagalan_basis_data.dart';
+import '../model/catatan_bmi.dart';
 
 /// Repository for CRUD operations on the `bmi_records` table.
 ///

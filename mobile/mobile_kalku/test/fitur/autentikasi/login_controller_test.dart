@@ -1,12 +1,12 @@
 import 'package:flutter_test/flutter_test.dart';
-import 'package:mobile_kalku/core/domain/auth_result.dart';
-import 'package:mobile_kalku/core/domain/biometric_result.dart';
-import 'package:mobile_kalku/core/security/biometric_service.dart';
-import 'package:mobile_kalku/core/security/session_service.dart';
-import 'package:mobile_kalku/data/models/user.dart';
-import 'package:mobile_kalku/data/models/user_session.dart';
-import 'package:mobile_kalku/data/repositories/auth_repository.dart';
-import 'package:mobile_kalku/features/auth/controller/login_controller.dart';
+import 'package:mobile_kalku/inti/domain/hasil_autentikasi.dart';
+import 'package:mobile_kalku/inti/domain/hasil_biometrik.dart';
+import 'package:mobile_kalku/inti/keamanan/layanan_biometrik.dart';
+import 'package:mobile_kalku/inti/keamanan/layanan_sesi.dart';
+import 'package:mobile_kalku/data/model/pengguna.dart';
+import 'package:mobile_kalku/data/model/sesi_pengguna.dart';
+import 'package:mobile_kalku/data/repositori/repositori_autentikasi.dart';
+import 'package:mobile_kalku/fitur/autentikasi/pengontrol/pengontrol_login.dart';
 
 class MockAuthRepository implements AuthRepository {
   User? userToReturn;

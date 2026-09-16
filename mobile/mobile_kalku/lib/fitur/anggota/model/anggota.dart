@@ -1,7 +1,7 @@
-/// A single group-member entry shown on the "Daftar Anggota" screen.
+/// Entri tunggal anggota kelompok yang ditampilkan pada layar "Daftar Anggota".
 ///
-/// This is constant metadata (MENU_IMPLEMENTATION.md #5), not something
-/// stored in SQLite.
+/// Ini adalah metadata konstan (Sesuai MENU_IMPLEMENTATION.md #5), bukan sesuatu
+/// yang disimpan dalam SQLite.
 class Member {
   const Member({
     required this.name,
@@ -14,8 +14,8 @@ class Member {
   final String nim;
   final String role;
 
-  /// Optional local asset path. When null or the asset fails to load,
-  /// the UI falls back to an initials avatar per MENU_IMPLEMENTATION.md #5.
+  /// Path aset lokal opsional. Jika null atau aset gagal dimuat,
+  /// UI akan menggunakan inisial sebagai avatar sesuai MENU_IMPLEMENTATION.md #5.
   final String? avatarAssetPath;
 
   String get initials {

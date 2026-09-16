@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-import '../../../core/constants/app_colors.dart';
-import '../../../core/constants/app_dimensions.dart';
-import '../../../core/utils/calculation_error_translator.dart';
-import '../../../core/utils/date_utils.dart' as du;
-import '../../../widgets/conversion_result_card.dart';
-import '../controller/date_converter_controller.dart';
+import '../../../inti/konstanta/warna_aplikasi.dart';
+import '../../../inti/konstanta/dimensi_aplikasi.dart';
+import '../../../inti/utilitas/penerjemah_kesalahan_perhitungan.dart';
+import '../../../inti/utilitas/utilitas_tanggal.dart' as du;
+import '../../../komponen/kartu_hasil_konversi.dart';
+import '../pengontrol/pengontrol_konversi_tanggal.dart';
 
 class DateConverterPage extends StatelessWidget {
   const DateConverterPage({super.key});

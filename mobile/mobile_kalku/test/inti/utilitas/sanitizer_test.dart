@@ -1,5 +1,5 @@
 import 'package:flutter_test/flutter_test.dart';
-import 'package:mobile_kalku/core/utils/sanitizers.dart';
+import 'package:mobile_kalku/inti/utilitas/pembersih_input.dart';
 
 void main() {
   group('Sanitizers', () {

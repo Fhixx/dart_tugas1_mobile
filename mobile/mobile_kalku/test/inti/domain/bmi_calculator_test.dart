@@ -1,7 +1,7 @@
 import 'package:flutter_test/flutter_test.dart';
-import 'package:mobile_kalku/core/domain/bmi_calculator.dart';
-import 'package:mobile_kalku/core/domain/bmi_category.dart';
-import 'package:mobile_kalku/core/domain/bmi_calculation_result.dart';
+import 'package:mobile_kalku/inti/domain/perhitungan_bmi.dart';
+import 'package:mobile_kalku/inti/domain/kategori_bmi.dart';
+import 'package:mobile_kalku/inti/domain/hasil_perhitungan_bmi.dart';
 
 void main() {
   const calc = BmiCalculator();

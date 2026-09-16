@@ -1,6 +1,6 @@
 
 import 'package:flutter_test/flutter_test.dart';
-import 'package:mobile_kalku/core/security/password_service.dart';
+import 'package:mobile_kalku/inti/keamanan/layanan_kata_sandi.dart';
 
 void main() {
   late PasswordService passwordService;

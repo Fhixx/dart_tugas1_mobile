@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-import '../../../core/constants/app_colors.dart';
-import '../../../core/constants/app_dimensions.dart';
-import '../../../widgets/gradient_button.dart';
-import '../controller/stopwatch_controller.dart';
+import '../../../inti/konstanta/warna_aplikasi.dart';
+import '../../../inti/konstanta/dimensi_aplikasi.dart';
+import '../../../komponen/tombol_gradasi.dart';
+import '../pengontrol/pengontrol_stopwatch.dart';
 
 /// Stopwatch screen. Owns its [StopwatchController] via a local
 /// `ChangeNotifierProvider` created once here — because `MainShell` keeps

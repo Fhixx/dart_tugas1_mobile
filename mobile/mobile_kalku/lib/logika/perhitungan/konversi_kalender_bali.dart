@@ -1,4 +1,4 @@
-import 'weton_calculator.dart' as weton;
+import 'perhitungan_weton.dart' as weton;
 
 /// 30 Wuku names, in canonical cycle order (Sinta -> Watugunung), cross-
 /// checked against multiple independent published sources (Kompas.com,

@@ -1,6 +1,6 @@
-import '../models/member.dart';
+import '../model/anggota.dart';
 
-/// Group member list for the "Daftar Anggota" screen.
+/// Daftar anggota kelompok untuk layar "Daftar Anggota".
 ///
 /// TODO(taufikk): NIM dan foto masih placeholder — ganti dengan data asli
 /// kelompok sebelum submit tugas. Nama & pembagian peran diambil dari

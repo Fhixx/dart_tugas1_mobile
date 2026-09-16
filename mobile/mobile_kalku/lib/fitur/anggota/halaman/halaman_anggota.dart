@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 
-import '../../../core/constants/app_colors.dart';
-import '../../../core/constants/app_dimensions.dart';
-import '../../../widgets/app_card.dart';
-import '../data/member_data.dart';
-import '../models/member.dart';
+import '../../../inti/konstanta/warna_aplikasi.dart';
+import '../../../inti/konstanta/dimensi_aplikasi.dart';
+import '../../../komponen/kartu_aplikasi.dart';
+import '../data/data_anggota.dart';
+import '../model/anggota.dart';
 
 class MembersPage extends StatelessWidget {
   const MembersPage({super.key});

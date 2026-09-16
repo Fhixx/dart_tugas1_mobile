@@ -1,24 +1,24 @@
 import 'package:flutter/material.dart';
 
-import '../../../core/constants/app_colors.dart';
-import '../../../core/constants/app_dimensions.dart';
-import '../../../core/constants/app_strings.dart';
-import '../../../core/database/database_helper.dart';
-import '../../../data/models/user.dart';
-import '../../../data/repositories/bmi_repository.dart';
-import '../../bmi/pages/bmi_calculator_page.dart';
-import '../../bmi/pages/bmi_history_page.dart';
-import '../../calendar/pages/nusantara_calendar_page.dart';
-import '../../date_converter/pages/date_converter_page.dart';
-import '../../members/pages/members_page.dart';
-import '../widgets/home_menu_card.dart';
+import '../../../inti/konstanta/warna_aplikasi.dart';
+import '../../../inti/konstanta/dimensi_aplikasi.dart';
+import '../../../inti/konstanta/teks_aplikasi.dart';
+import '../../../inti/basis_data/pengelola_basis_data.dart';
+import '../../../data/model/pengguna.dart';
+import '../../../data/repositori/repositori_bmi.dart';
+import '../../bmi/halaman/halaman_perhitungan_bmi.dart';
+import '../../bmi/halaman/halaman_riwayat_bmi.dart';
+import '../../kalender_nusantara/halaman/halaman_kalender_nusantara.dart';
+import '../../konversi_tanggal/halaman/halaman_konversi_tanggal.dart';
+import '../../anggota/halaman/halaman_anggota.dart';
+import '../komponen/kartu_menu_beranda.dart';
 
-/// Home tab: greeting header + the 5 required vertical menu items
-/// (MENU_IMPLEMENTATION.md #4). Home must not contain BMI/calendar logic
-/// — it only navigates via `Navigator.push()`.
+/// Tab Beranda: menampilkan header ucapan selamat datang dan 5 menu utama
+/// (Sesuai MENU_IMPLEMENTATION.md #4). Halaman ini tidak berisi logika BMI/kalender
+/// — hanya melakukan navigasi menggunakan `Navigator.push()`.
 ///
-/// [user] is the authenticated user from Splash/Login, propagated to
-/// Dev1 BMI pages (calculator, history) so records are scoped correctly.
+/// Parameter [user] adalah pengguna yang terautentikasi dari Splash/Login,
+/// yang diteruskan ke halaman BMI (kalkulator, riwayat) agar rekam data sesuai dengan pengguna tersebut.
 class HomePage extends StatelessWidget {
   const HomePage({super.key, required this.user});
 

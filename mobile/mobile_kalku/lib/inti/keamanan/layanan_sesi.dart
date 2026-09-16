@@ -1,5 +1,5 @@
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
-import '../../data/models/user_session.dart';
+import '../../data/model/sesi_pengguna.dart';
 
 /// Manages the application login session using [FlutterSecureStorage].
 ///

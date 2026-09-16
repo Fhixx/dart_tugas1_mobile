@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
-import '../../../data/models/bmi_record.dart';
-import '../../../data/models/user.dart';
-import '../../../data/repositories/bmi_repository.dart';
-import '../controllers/bmi_history_controller.dart';
-import 'bmi_detail_page.dart';
-import 'bmi_edit_page.dart';
+import '../../../data/model/catatan_bmi.dart';
+import '../../../data/model/pengguna.dart';
+import '../../../data/repositori/repositori_bmi.dart';
+import '../pengontrol/pengontrol_riwayat_bmi.dart';
+import 'halaman_detail_bmi.dart';
+import 'halaman_edit_bmi.dart';
 
 /// Screen displaying the list of saved BMI records for the authenticated user.
 ///

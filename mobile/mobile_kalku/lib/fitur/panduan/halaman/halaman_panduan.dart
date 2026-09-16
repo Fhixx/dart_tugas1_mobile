@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 
-import '../../../core/constants/app_colors.dart';
-import '../../../core/constants/app_dimensions.dart';
-import '../data/help_sections.dart';
+import '../../../inti/konstanta/warna_aplikasi.dart';
+import '../../../inti/konstanta/dimensi_aplikasi.dart';
+import '../data/bagian_panduan.dart';
 
 /// Panduan tab — accordion list, never one long unbroken paragraph
 /// (DESIGN_SYSTEM.md #18).

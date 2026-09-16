@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 
-import '../core/constants/app_colors.dart';
-import '../core/constants/app_dimensions.dart';
-import '../core/constants/app_strings.dart';
-import 'gradient_button.dart';
+import '../inti/konstanta/warna_aplikasi.dart';
+import '../inti/konstanta/dimensi_aplikasi.dart';
+import '../inti/konstanta/teks_aplikasi.dart';
+import 'tombol_gradasi.dart';
 
 /// Centered loading indicator for async feature states.
 class LoadingView extends StatelessWidget {

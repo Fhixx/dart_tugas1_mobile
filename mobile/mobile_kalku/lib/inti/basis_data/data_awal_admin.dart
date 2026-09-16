@@ -1,6 +1,6 @@
 import 'package:sqflite/sqflite.dart';
-import '../../data/models/user.dart';
-import '../../core/security/password_service.dart';
+import '../../data/model/pengguna.dart';
+import '../../inti/keamanan/layanan_kata_sandi.dart';
 
 /// Seeds the database with an admin user (username: 'tofik', password: '123').
 /// Idempotent – does nothing if the admin already exists.

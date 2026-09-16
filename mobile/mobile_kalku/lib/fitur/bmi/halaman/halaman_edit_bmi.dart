@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import '../../../data/models/bmi_record.dart';
-import '../../../data/repositories/bmi_repository.dart';
-import '../controllers/bmi_edit_controller.dart';
+import '../../../data/model/catatan_bmi.dart';
+import '../../../data/repositori/repositori_bmi.dart';
+import '../pengontrol/pengontrol_edit_bmi.dart';
 
 /// Screen for editing an existing [BmiRecord].
 ///

@@ -1,4 +1,4 @@
-import '../errors/failure.dart';
+import 'kegagalan.dart';
 
 /// Represents a validation failure for a specific field.
 ///

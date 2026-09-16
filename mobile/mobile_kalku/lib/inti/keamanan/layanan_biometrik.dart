@@ -1,8 +1,8 @@
 import 'package:flutter/services.dart';
 import 'package:local_auth/local_auth.dart';
 import 'package:local_auth/error_codes.dart' as auth_error;
-import '../domain/biometric_result.dart';
-import '../../data/repositories/auth_repository.dart';
+import '../domain/hasil_biometrik.dart';
+import '../../data/repositori/repositori_autentikasi.dart';
 
 /// Handles all device biometric authentication interactions.
 ///

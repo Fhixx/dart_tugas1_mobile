@@ -1,7 +1,7 @@
 import 'dart:async';
 import 'package:path/path.dart';
 import 'package:sqflite/sqflite.dart';
-import 'migrations/migration_v1.dart';
+import 'migrasi/migrasi_versi_1.dart';
 
 /// Helper class that provides a singleton instance of the SQLite database.
 ///

@@ -1,13 +1,13 @@
 import 'package:flutter/foundation.dart';
-import '../../../core/domain/auth_result.dart';
-import '../../../core/domain/biometric_result.dart';
-import '../../../core/security/biometric_service.dart';
-import '../../../core/security/session_service.dart';
-import '../../../core/utils/sanitizers.dart';
-import '../../../core/utils/validators.dart';
-import '../../../data/models/user.dart';
-import '../../../data/models/user_session.dart';
-import '../../../data/repositories/auth_repository.dart';
+import '../../../inti/domain/hasil_autentikasi.dart';
+import '../../../inti/domain/hasil_biometrik.dart';
+import '../../../inti/keamanan/layanan_biometrik.dart';
+import '../../../inti/keamanan/layanan_sesi.dart';
+import '../../../inti/utilitas/pembersih_input.dart';
+import '../../../inti/utilitas/validator_input.dart';
+import '../../../data/model/pengguna.dart';
+import '../../../data/model/sesi_pengguna.dart';
+import '../../../data/repositori/repositori_autentikasi.dart';
 
 /// State and logic controller for the Login screen.
 class LoginController extends ChangeNotifier {

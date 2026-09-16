@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-import '../core/constants/app_colors.dart';
-import '../core/constants/app_dimensions.dart';
+import '../inti/konstanta/warna_aplikasi.dart';
+import '../inti/konstanta/dimensi_aplikasi.dart';
 
 /// Primary call-to-action button using the brand gradient.
 ///

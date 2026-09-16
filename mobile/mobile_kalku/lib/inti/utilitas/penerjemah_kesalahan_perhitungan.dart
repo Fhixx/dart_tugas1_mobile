@@ -1,4 +1,4 @@
-import '../../domain/calculators/calculation_error.dart';
+import '../../logika/perhitungan/kesalahan_perhitungan.dart';
 
 /// Translates [CalculationError] into user-facing Indonesian copy.
 /// COMPUTATION_LOGIC.md #16: "UI layer menerjemahkan ke Bahasa Indonesia."

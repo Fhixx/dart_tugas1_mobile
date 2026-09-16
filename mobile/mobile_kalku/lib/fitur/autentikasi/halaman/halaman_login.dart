@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
-import '../../../core/security/auth_contract.dart';
-import '../../../core/security/biometric_service.dart';
-import '../../../core/security/session_service.dart';
-import '../../../data/models/user.dart';
-import '../../../data/repositories/auth_repository.dart';
-import '../controller/login_controller.dart';
+import '../../../inti/keamanan/kontrak_autentikasi.dart';
+import '../../../inti/keamanan/layanan_biometrik.dart';
+import '../../../inti/keamanan/layanan_sesi.dart';
+import '../../../data/model/pengguna.dart';
+import '../../../data/repositori/repositori_autentikasi.dart';
+import '../pengontrol/pengontrol_login.dart';
 
 /// User login screen supporting credential login and biometric authentication.
 class LoginPage extends StatefulWidget {

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../core/constants/app_colors.dart';
+import '../inti/konstanta/warna_aplikasi.dart';
 
 /// Consistent snackbar presentation. Message copy stays in
 /// `app_strings.dart` / feature-level strings — this helper only handles
