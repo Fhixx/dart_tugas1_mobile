@@ -4,6 +4,8 @@ import '../../../core/constants/app_colors.dart';
 import '../../../core/constants/app_dimensions.dart';
 import '../../../core/constants/app_strings.dart';
 import '../../../widgets/coming_soon_page.dart';
+import '../../calendar/pages/nusantara_calendar_page.dart';
+import '../../date_converter/pages/date_converter_page.dart';
 import '../../members/pages/members_page.dart';
 import '../widgets/home_menu_card.dart';
 
@@ -71,12 +73,7 @@ class HomePage extends StatelessWidget {
                     description: AppStrings.menuDateConverterDesc,
                     onTap: () => Navigator.push(
                       context,
-                      MaterialPageRoute(
-                        builder: (_) => const ComingSoonPage(
-                          title: AppStrings.menuDateConverterTitle,
-                          note: 'Menyusul di Tahap 4 (integrasi domain calculator).',
-                        ),
-                      ),
+                      MaterialPageRoute(builder: (_) => const DateConverterPage()),
                     ),
                   ),
                   const SizedBox(height: AppDimensions.fieldGap),
@@ -86,12 +83,7 @@ class HomePage extends StatelessWidget {
                     description: AppStrings.menuCalendarDesc,
                     onTap: () => Navigator.push(
                       context,
-                      MaterialPageRoute(
-                        builder: (_) => const ComingSoonPage(
-                          title: AppStrings.menuCalendarTitle,
-                          note: 'Menyusul di Tahap 4 (integrasi domain calculator).',
-                        ),
-                      ),
+                      MaterialPageRoute(builder: (_) => const NusantaraCalendarPage()),
                     ),
                   ),
                 ],

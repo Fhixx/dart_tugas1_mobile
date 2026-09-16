@@ -28,6 +28,33 @@ class DateUtils {
     );
   }
 
+  static const List<String> indonesianMonthNames = [
+    'Januari',
+    'Februari',
+    'Maret',
+    'April',
+    'Mei',
+    'Juni',
+    'Juli',
+    'Agustus',
+    'September',
+    'Oktober',
+    'November',
+    'Desember',
+  ];
+
+  /// Formats [date] as `"16 September 2026"` without the `intl` package
+  /// (kept dependency-free until pubspec.yaml coordination with Dev 1).
+  static String formatFullDate(DateTime date) {
+    return '${date.day} ${indonesianMonthNames[date.month - 1]} ${date.year}';
+  }
+
+  /// Formats the time-of-day portion of [date] as `"HH:MM"`.
+  static String formatTime(DateTime date) {
+    String pad2(int value) => value.toString().padLeft(2, '0');
+    return '${pad2(date.hour)}:${pad2(date.minute)}';
+  }
+
   /// Adds [months] to [date], clamping the day-of-month to the target
   /// month's length (e.g. 31 Jan + 1 month -> 28/29 Feb).
   static DateTime addMonths(DateTime date, int months) {
