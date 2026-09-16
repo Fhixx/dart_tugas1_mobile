@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import '../../../core/constants/app_colors.dart';
 import '../../../core/constants/app_strings.dart';
+import '../../../data/models/user.dart';
 import '../../../widgets/confirmation_dialog.dart';
 import '../../help/pages/help_page.dart';
 import '../../stopwatch/pages/stopwatch_page.dart';
@@ -20,8 +21,13 @@ import 'home_page.dart';
 /// default implementation only closes the dialog and shows a stub
 /// message — replace it once `SessionService.clearSession()` exists.
 class MainShell extends StatefulWidget {
-  const MainShell({super.key, this.onLogoutConfirmed});
+  const MainShell({
+    super.key,
+    required this.user,
+    this.onLogoutConfirmed,
+  });
 
+  final User user;
   final VoidCallback? onLogoutConfirmed;
 
   @override
@@ -31,7 +37,11 @@ class MainShell extends StatefulWidget {
 class _MainShellState extends State<MainShell> {
   int _currentIndex = 0;
 
-  static const _tabs = [HomePage(), StopwatchPage(), HelpPage()];
+  List<Widget> get _tabs => [
+        HomePage(user: widget.user),
+        const StopwatchPage(),
+        const HelpPage(),
+      ];
 
   Future<void> _handleTap(int index) async {
     if (index == 3) {
@@ -49,7 +59,7 @@ class _MainShellState extends State<MainShell> {
     setState(() => _currentIndex = index);
   }
 
-  void _performLogout() {
+  Future<void> _performLogout() async {
     if (widget.onLogoutConfirmed != null) {
       widget.onLogoutConfirmed!();
       return;

@@ -17,7 +17,7 @@ class MembersPage extends StatelessWidget {
       body: ListView.separated(
         padding: const EdgeInsets.all(AppDimensions.screenHorizontalPadding),
         itemCount: kGroupMembers.length,
-        separatorBuilder: (_, __) =>
+          separatorBuilder: (context, _) =>
             const SizedBox(height: AppDimensions.fieldGap),
         itemBuilder: (context, index) => _MemberCard(member: kGroupMembers[index]),
       ),

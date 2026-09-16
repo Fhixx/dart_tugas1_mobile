@@ -20,7 +20,7 @@ class HelpPage extends StatelessWidget {
           horizontal: AppDimensions.space12,
         ),
         itemCount: kHelpSections.length,
-        separatorBuilder: (_, __) => const SizedBox(height: AppDimensions.space8),
+          separatorBuilder: (context, _) => const SizedBox(height: AppDimensions.space8),
         itemBuilder: (context, index) {
           final section = kHelpSections[index];
           return Container(

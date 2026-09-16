@@ -3,7 +3,11 @@ import 'package:flutter/material.dart';
 import '../../../core/constants/app_colors.dart';
 import '../../../core/constants/app_dimensions.dart';
 import '../../../core/constants/app_strings.dart';
-import '../../../widgets/coming_soon_page.dart';
+import '../../../core/database/database_helper.dart';
+import '../../../data/models/user.dart';
+import '../../../data/repositories/bmi_repository.dart';
+import '../../bmi/pages/bmi_calculator_page.dart';
+import '../../bmi/pages/bmi_history_page.dart';
 import '../../calendar/pages/nusantara_calendar_page.dart';
 import '../../date_converter/pages/date_converter_page.dart';
 import '../../members/pages/members_page.dart';
@@ -12,8 +16,13 @@ import '../widgets/home_menu_card.dart';
 /// Home tab: greeting header + the 5 required vertical menu items
 /// (MENU_IMPLEMENTATION.md #4). Home must not contain BMI/calendar logic
 /// — it only navigates via `Navigator.push()`.
+///
+/// [user] is the authenticated user from Splash/Login, propagated to
+/// Dev1 BMI pages (calculator, history) so records are scoped correctly.
 class HomePage extends StatelessWidget {
-  const HomePage({super.key});
+  const HomePage({super.key, required this.user});
+
+  final User user;
 
   @override
   Widget build(BuildContext context) {
@@ -41,30 +50,40 @@ class HomePage extends StatelessWidget {
                     icon: Icons.monitor_weight_outlined,
                     title: AppStrings.menuBmiCalculatorTitle,
                     description: AppStrings.menuBmiCalculatorDesc,
-                    onTap: () => Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (_) => const ComingSoonPage(
-                          title: AppStrings.menuBmiCalculatorTitle,
-                          note: 'Bagian ini milik Developer 1 (BMI + SQLite).',
+                    onTap: () async {
+                      final db = await DatabaseHelper.instance.database;
+                      final repo = BmiRepository(db);
+                      if (!context.mounted) return;
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (_) => BmiCalculatorPage(
+                            user: user,
+                            bmiRepository: repo,
+                          ),
                         ),
-                      ),
-                    ),
+                      );
+                    },
                   ),
                   const SizedBox(height: AppDimensions.fieldGap),
                   HomeMenuCard(
                     icon: Icons.history_outlined,
                     title: AppStrings.menuBmiHistoryTitle,
                     description: AppStrings.menuBmiHistoryDesc,
-                    onTap: () => Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (_) => const ComingSoonPage(
-                          title: AppStrings.menuBmiHistoryTitle,
-                          note: 'Bagian ini milik Developer 1 (BMI + SQLite).',
+                    onTap: () async {
+                      final db = await DatabaseHelper.instance.database;
+                      final repo = BmiRepository(db);
+                      if (!context.mounted) return;
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (_) => BmiHistoryPage(
+                            user: user,
+                            bmiRepository: repo,
+                          ),
                         ),
-                      ),
-                    ),
+                      );
+                    },
                   ),
                   const SizedBox(height: AppDimensions.fieldGap),
                   HomeMenuCard(

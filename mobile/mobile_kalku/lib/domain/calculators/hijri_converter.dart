@@ -16,13 +16,11 @@ class HijriDateResult {
 }
 
 class HijriConversionOutcome {
-  const HijriConversionOutcome.success(HijriDateResult result)
-      : result = result,
-        error = null;
+  const HijriConversionOutcome.success(this.result)
+      : error = null;
 
-  const HijriConversionOutcome.failure(CalculationError error)
-      : result = null,
-        error = error;
+  const HijriConversionOutcome.failure(this.error)
+      : result = null;
 
   final HijriDateResult? result;
   final CalculationError? error;

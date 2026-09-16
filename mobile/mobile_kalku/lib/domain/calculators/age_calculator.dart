@@ -37,13 +37,11 @@ class AgeResult {
 /// Outcome wrapper so calculators never return a bare null on failure
 /// (COMPUTATION_LOGIC.md #16 — typed failure, not a random string).
 class AgeCalculationOutcome {
-  const AgeCalculationOutcome.success(AgeResult result)
-      : result = result,
-        error = null;
+  const AgeCalculationOutcome.success(this.result)
+      : error = null;
 
-  const AgeCalculationOutcome.failure(CalculationError error)
-      : result = null,
-        error = error;
+  const AgeCalculationOutcome.failure(this.error)
+      : result = null;
 
   final AgeResult? result;
   final CalculationError? error;

@@ -1,35 +1,52 @@
 import 'package:flutter/material.dart';
 import 'features/auth/pages/splash_page.dart';
+import 'features/auth/pages/login_page.dart';
+import 'features/home/pages/main_shell.dart';
+import 'core/security/session_service.dart';
+import 'core/security/auth_contract.dart';
 import 'data/models/user.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
-  runApp(const _TempDev1App());
+  runApp(const NusaFitApp());
 }
 
-/// Minimal temporary app root for Dev 1 to test the Auth module.
-/// Developer 2 will replace this logic with the real App/MainShell.
-class _TempDev1App extends StatelessWidget {
-  const _TempDev1App();
+/// Final NusaFit application entry point.
+/// Uses SplashPage for initialization, then routes to MainShell when authenticated.
+class NusaFitApp extends StatelessWidget {
+  const NusaFitApp({super.key});
 
   @override
   Widget build(BuildContext context) {
-    Widget dummyBuilder(BuildContext context, User user) {
-      return Scaffold(
-        appBar: AppBar(title: const Text('Authenticated (Temp)')),
-        body: Center(child: Text('Welcome, ${user.username}')),
+    Widget authenticatedBuilder(BuildContext context, User user) {
+      return MainShell(
+        user: user,
+        onLogoutConfirmed: () async {
+          final sessionService = SessionService();
+          await sessionService.clearSession();
+          if (context.mounted) {
+            Navigator.of(context).pushAndRemoveUntil(
+              MaterialPageRoute(
+                builder: (ctx) => LoginPage(
+                  authenticatedBuilder: authenticatedBuilder,
+                ),
+              ),
+              (_) => false,
+            );
+          }
+        },
       );
     }
 
     return MaterialApp(
-      title: 'NusaFit Temp',
+      title: 'NusaFit',
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
         useMaterial3: true,
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.blue),
       ),
       home: SplashPage(
-        authenticatedBuilder: dummyBuilder,
+        authenticatedBuilder: authenticatedBuilder,
       ),
     );
   }
