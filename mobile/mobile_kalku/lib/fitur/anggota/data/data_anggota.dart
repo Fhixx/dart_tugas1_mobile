@@ -7,8 +7,8 @@ import '../model/anggota.dart';
 /// PRODUCTION_SPLIT_2_PERSON.md.
 const List<Member> kGroupMembers = [
   Member(
-    name: 'topek',
-    nim: '12424',
+    name: 'Taufik Nur Hidayah',
+    nim: '124240070',
     role: '',
   ),
   Member(
