@@ -28,13 +28,28 @@ class HomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: AppColors.background,
-      body: SafeArea(
-        child: Column(
-          children: [
-            const _HomeHeader(),
-            Expanded(
+      body: Column(
+        children: [
+          // Bagian atas full gradient
+          Container(
+            width: double.infinity,
+            decoration: const BoxDecoration(
+              gradient: AppColors.primaryGradient,
+            ),
+            child: const SafeArea(
+              bottom: false,
+              child: _HomeHeader(),
+            ),
+          ),
+
+          // Bagian konten
+          Expanded(
+            child: SafeArea(
+              top: false,
               child: ListView(
-                padding: const EdgeInsets.all(AppDimensions.screenHorizontalPadding),
+                padding: const EdgeInsets.all(
+                  AppDimensions.screenHorizontalPadding,
+                ),
                 children: [
                   HomeMenuCard(
                     icon: Icons.groups_outlined,
@@ -42,18 +57,27 @@ class HomePage extends StatelessWidget {
                     description: AppStrings.menuMembersDesc,
                     onTap: () => Navigator.push(
                       context,
-                      MaterialPageRoute(builder: (_) => const MembersPage()),
+                      MaterialPageRoute(
+                        builder: (_) => const MembersPage(),
+                      ),
                     ),
                   ),
-                  const SizedBox(height: AppDimensions.fieldGap),
+
+                  const SizedBox(
+                    height: AppDimensions.fieldGap,
+                  ),
+
                   HomeMenuCard(
                     icon: Icons.monitor_weight_outlined,
                     title: AppStrings.menuBmiCalculatorTitle,
                     description: AppStrings.menuBmiCalculatorDesc,
                     onTap: () async {
-                      final db = await DatabaseHelper.instance.database;
+                      final db =
+                          await DatabaseHelper.instance.database;
                       final repo = BmiRepository(db);
+
                       if (!context.mounted) return;
+
                       Navigator.push(
                         context,
                         MaterialPageRoute(
@@ -65,15 +89,22 @@ class HomePage extends StatelessWidget {
                       );
                     },
                   ),
-                  const SizedBox(height: AppDimensions.fieldGap),
+
+                  const SizedBox(
+                    height: AppDimensions.fieldGap,
+                  ),
+
                   HomeMenuCard(
                     icon: Icons.history_outlined,
                     title: AppStrings.menuBmiHistoryTitle,
                     description: AppStrings.menuBmiHistoryDesc,
                     onTap: () async {
-                      final db = await DatabaseHelper.instance.database;
+                      final db =
+                          await DatabaseHelper.instance.database;
                       final repo = BmiRepository(db);
+
                       if (!context.mounted) return;
+
                       Navigator.push(
                         context,
                         MaterialPageRoute(
@@ -85,31 +116,44 @@ class HomePage extends StatelessWidget {
                       );
                     },
                   ),
-                  const SizedBox(height: AppDimensions.fieldGap),
+
+                  const SizedBox(
+                    height: AppDimensions.fieldGap,
+                  ),
+
                   HomeMenuCard(
                     icon: Icons.calendar_month_outlined,
                     title: AppStrings.menuDateConverterTitle,
                     description: AppStrings.menuDateConverterDesc,
                     onTap: () => Navigator.push(
                       context,
-                      MaterialPageRoute(builder: (_) => const DateConverterPage()),
+                      MaterialPageRoute(
+                        builder: (_) => const DateConverterPage(),
+                      ),
                     ),
                   ),
-                  const SizedBox(height: AppDimensions.fieldGap),
+
+                  const SizedBox(
+                    height: AppDimensions.fieldGap,
+                  ),
+
                   HomeMenuCard(
                     icon: Icons.temple_hindu_outlined,
                     title: AppStrings.menuCalendarTitle,
                     description: AppStrings.menuCalendarDesc,
                     onTap: () => Navigator.push(
                       context,
-                      MaterialPageRoute(builder: (_) => const NusantaraCalendarPage()),
+                      MaterialPageRoute(
+                        builder: (_) =>
+                            const NusantaraCalendarPage(),
+                      ),
                     ),
                   ),
                 ],
               ),
             ),
-          ],
-        ),
+          ),
+        ],
       ),
     );
   }

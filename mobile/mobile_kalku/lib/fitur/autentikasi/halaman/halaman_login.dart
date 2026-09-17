@@ -5,6 +5,7 @@ import '../../../inti/keamanan/layanan_sesi.dart';
 import '../../../data/model/pengguna.dart';
 import '../../../data/repositori/repositori_autentikasi.dart';
 import '../pengontrol/pengontrol_login.dart';
+import '../../../inti/konstanta/warna_aplikasi.dart';
 
 /// User login screen supporting credential login and biometric authentication.
 class LoginPage extends StatefulWidget {
@@ -216,7 +217,7 @@ class _LoginPageState extends State<LoginPage> {
                             errorText: _controller.usernameError,
                             prefixIcon: const Icon(
                               Icons.person_outline_rounded,
-                              color: Colors.blue,
+                              color: AppColors.primary,
                             ),
                             border: OutlineInputBorder(
                               borderRadius: BorderRadius.circular(8),
@@ -236,7 +237,7 @@ class _LoginPageState extends State<LoginPage> {
                             errorText: _controller.passwordError,
                             prefixIcon: const Icon(
                               Icons.lock_outline_rounded,
-                              color: Colors.blue,
+                              color: AppColors.primary,
                             ),
                             suffixIcon: IconButton(
                               icon: Icon(
@@ -261,7 +262,7 @@ class _LoginPageState extends State<LoginPage> {
                         // Submit Button
                         ElevatedButton(
                           style: ElevatedButton.styleFrom(
-                            backgroundColor: Colors.blue,
+                            backgroundColor: AppColors.primary,
                             foregroundColor: Colors.white,
                             padding: const EdgeInsets.symmetric(vertical: 16),
                             shape: RoundedRectangleBorder(
@@ -326,7 +327,8 @@ class _LoginPageState extends State<LoginPage> {
           width: 72,
           height: 72,
           decoration: const BoxDecoration(
-            color: Colors.blue,
+            // color: Colors.primaryGradient,
+            gradient: AppColors.primaryGradient,
             shape: BoxShape.circle,
             boxShadow: [
               BoxShadow(

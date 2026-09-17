@@ -60,7 +60,24 @@ class _DateConverterView extends StatelessWidget {
 
     return Scaffold(
       backgroundColor: AppColors.background,
-      appBar: AppBar(title: const Text('Konversi Tanggal & Umur')),
+      appBar: AppBar(
+        title: const Text(
+          'Konversi Tanggal & Umur', 
+          style: TextStyle(
+          color: AppColors.surface,
+          ),
+        ),
+        backgroundColor: Colors.transparent,
+        elevation: 0,
+        iconTheme: const IconThemeData(
+          color: AppColors.surface,
+        ),
+        flexibleSpace: Container(
+          decoration: const BoxDecoration(
+            gradient: AppColors.primaryGradient,
+          ),
+        ),
+        ),
       body: ListView(
         padding: const EdgeInsets.all(AppDimensions.screenHorizontalPadding),
         children: [

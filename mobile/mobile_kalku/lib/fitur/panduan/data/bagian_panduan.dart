@@ -29,16 +29,6 @@ const List<HelpSection> kHelpSections = [
     ],
   ),
   HelpSection(
-    icon: Icons.fingerprint,
-    title: 'Login Biometrik',
-    steps: [
-      'Pastikan perangkat memiliki sidik jari/wajah yang terdaftar di pengaturan OS.',
-      'Pada halaman Login, tekan tombol biometrik.',
-      'Ikuti verifikasi dari sistem operasi perangkat Anda.',
-      'Jika berhasil dan biometrik pernah diaktifkan untuk akun ini, sesi akan dibuat otomatis.',
-    ],
-  ),
-  HelpSection(
     icon: Icons.home_outlined,
     title: 'Menu Utama',
     steps: [

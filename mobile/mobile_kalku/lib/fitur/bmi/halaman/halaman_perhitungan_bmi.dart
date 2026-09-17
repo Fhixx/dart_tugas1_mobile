@@ -3,6 +3,7 @@ import '../../../data/model/pengguna.dart';
 import '../../../data/repositori/repositori_bmi.dart';
 import '../pengontrol/pengontrol_perhitungan_bmi.dart';
 import 'halaman_hasil_bmi.dart';
+import '../../../inti/konstanta/warna_aplikasi.dart';
 
 /// BMI Calculator input screen.
 ///
@@ -87,7 +88,13 @@ class _BmiCalculatorPageState extends State<BmiCalculatorPage> {
     return Scaffold(
       appBar: AppBar(
         title: const Text('Kalkulator BMI'),
-        backgroundColor: Colors.blue,
+        // backgroundColor: AppColors.primary,
+        backgroundColor: Colors.transparent,
+        flexibleSpace: Container(
+          decoration: const BoxDecoration(
+            gradient: AppColors.primaryGradient,
+          ),
+        ),
         foregroundColor: Colors.white,
       ),
       backgroundColor: Colors.grey[50],
@@ -156,7 +163,7 @@ class _BmiCalculatorPageState extends State<BmiCalculatorPage> {
               ElevatedButton(
                 key: const ValueKey('calculate_button'),
                 style: ElevatedButton.styleFrom(
-                  backgroundColor: Colors.blue,
+                  backgroundColor: AppColors.primary,
                   foregroundColor: Colors.white,
                   padding: const EdgeInsets.symmetric(vertical: 16),
                   shape: RoundedRectangleBorder(

@@ -5,6 +5,7 @@ import '../../../data/repositori/repositori_bmi.dart';
 import '../pengontrol/pengontrol_riwayat_bmi.dart';
 import 'halaman_detail_bmi.dart';
 import 'halaman_edit_bmi.dart';
+import '../../../inti/konstanta/warna_aplikasi.dart';
 
 /// Screen displaying the list of saved BMI records for the authenticated user.
 ///
@@ -114,6 +115,14 @@ class _BmiHistoryPageState extends State<BmiHistoryPage> {
     return Scaffold(
       appBar: AppBar(
         title: const Text('Riwayat BMI'),
+        // backgroundColor: AppColors.primary,
+        backgroundColor: Colors.transparent,
+        flexibleSpace: Container(
+          decoration: const BoxDecoration(
+            gradient: AppColors.primaryGradient,
+          ),
+        ),
+        foregroundColor: Colors.white,
         actions: [
           IconButton(
             key: const ValueKey('refresh_history_button'),
