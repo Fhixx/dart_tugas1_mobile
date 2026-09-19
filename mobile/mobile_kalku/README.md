@@ -1,8 +1,7 @@
-# NusaFit — Complete Codebase Learning Guide
+PENTING
 
-> Tutorial arsitektur NusaFit untuk developer yang ingin memahami **kenapa satu fitur terdiri dari 5–10 file** dan **file mana yang harus dibuka untuk mengubah fitur X**.
+SEBELUM RUN PASTIKAN (flutter pub get)
 
----
 
 ## Table of Contents
 
