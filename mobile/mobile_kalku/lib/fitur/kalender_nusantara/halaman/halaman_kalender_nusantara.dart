@@ -5,6 +5,7 @@ import '../../../inti/konstanta/warna_aplikasi.dart';
 import '../../../inti/konstanta/dimensi_aplikasi.dart';
 import '../../../inti/utilitas/utilitas_tanggal.dart' as du;
 import '../../../komponen/kartu_hasil_konversi.dart';
+import '../../../logika/perhitungan/konversi_hijriah.dart';
 import '../pengontrol/pengontrol_kalender_nusantara.dart';
 
 class NusantaraCalendarPage extends StatelessWidget {
@@ -41,27 +42,22 @@ class _NusantaraCalendarView extends StatelessWidget {
     final controller = context.watch<NusantaraCalendarController>();
     final weton = controller.wetonResult;
     final saka = controller.sakaResult;
+    final hijri = controller.hijriResult;
 
     return Scaffold(
       backgroundColor: AppColors.background,
       appBar: AppBar(
         title: const Text(
           'Kalender Nusantara',
-          style: TextStyle(
-          color: AppColors.surface,
-          ),
-          ),
+          style: TextStyle(color: AppColors.surface),
+        ),
         backgroundColor: Colors.transparent,
         elevation: 0,
-        iconTheme: const IconThemeData(
-          color: AppColors.surface,
-        ),
+        iconTheme: const IconThemeData(color: AppColors.surface),
         flexibleSpace: Container(
-          decoration: const BoxDecoration(
-            gradient: AppColors.primaryGradient,
-          ),
+          decoration: const BoxDecoration(gradient: AppColors.primaryGradient),
         ),
-        ),
+      ),
       body: ListView(
         padding: const EdgeInsets.all(AppDimensions.screenHorizontalPadding),
         children: [
@@ -76,12 +72,17 @@ class _NusantaraCalendarView extends StatelessWidget {
                 padding: const EdgeInsets.symmetric(horizontal: 16),
                 decoration: BoxDecoration(
                   border: Border.all(color: AppColors.divider),
-                  borderRadius: BorderRadius.circular(AppDimensions.radiusInput),
+                  borderRadius: BorderRadius.circular(
+                    AppDimensions.radiusInput,
+                  ),
                 ),
                 child: Row(
                   children: [
-                    const Icon(Icons.calendar_today_outlined,
-                        size: 18, color: AppColors.primary),
+                    const Icon(
+                      Icons.calendar_today_outlined,
+                      size: 18,
+                      color: AppColors.primary,
+                    ),
                     const SizedBox(width: 8),
                     Text(
                       du.DateUtils.formatFullDate(controller.selectedDate),
@@ -111,13 +112,13 @@ class _NusantaraCalendarView extends StatelessWidget {
             icon: Icons.temple_hindu_outlined,
             rows: [
               ConversionRow('Wuku', saka.wuku),
-              ConversionRow('Hari dalam Wuku', 'ke-${saka.wukuDayIndex} dari 7'),
+              ConversionRow(
+                'Hari dalam Wuku',
+                'ke-${saka.wukuDayIndex} dari 7',
+              ),
               ConversionRow('Pancawara', saka.pancawara),
               ConversionRow('Saptawara', saka.saptawara),
-              ConversionRow(
-                'Sasih',
-                saka.sasih ?? 'Segera hadir',
-              ),
+              ConversionRow('Sasih', saka.sasih ?? 'Segera hadir'),
               ConversionRow(
                 'Tahun Saka',
                 saka.tahunSaka?.toString() ?? 'Segera hadir',
@@ -126,6 +127,21 @@ class _NusantaraCalendarView extends StatelessWidget {
             footnote: saka.isLunarDataComplete
                 ? null
                 : 'Sasih & Tahun Saka presisi menunggu algoritma lunisolar terverifikasi — lihat catatan di bali_calendar_converter.dart.',
+          ),
+          const SizedBox(height: AppDimensions.fieldGap),
+          ConversionResultCard(
+            title: 'Hijriah',
+            icon: Icons.star_half_outlined,
+            rows: hijri.isSuccess
+                ? [
+                    ConversionRow(
+                      'Tanggal',
+                      '${hijri.result!.day} ${hijri.result!.monthName} ${hijri.result!.year} H',
+                    ),
+                  ]
+                : [ConversionRow('Status', 'Tidak tersedia')],
+            footnote:
+                'Perhitungan algoritmik/offline — dapat berbeda 1-2 hari dari penetapan resmi.',
           ),
         ],
       ),

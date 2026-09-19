@@ -1,6 +1,7 @@
 import 'package:flutter/foundation.dart';
 
 import '../../../logika/perhitungan/konversi_kalender_bali.dart';
+import '../../../logika/perhitungan/konversi_hijriah.dart';
 import '../../../logika/perhitungan/perhitungan_weton.dart';
 
 /// Pengontrol (Controller) untuk layar Kalender Nusantara.
@@ -24,4 +25,6 @@ class NusantaraCalendarController extends ChangeNotifier {
   WetonResult get wetonResult => calculateWeton(selectedDate);
 
   SakaCalendarResult get sakaResult => calculateSakaCalendar(selectedDate);
+
+  HijriConversionOutcome get hijriResult => convertToHijri(selectedDate);
 }
